@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Records</title>
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.tags %}
+    <script>alert("{{ message }}")</script>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles can be added here */
+        body {
+            background-color: #f8f9fa; /* Bootstrap default background color */
+        }
+        .upload-form {
+            box-shadow: 1px 1px 10px 2px black;
+            border: 2px solid white;
+            background-color: transparent;
+            width: 30%;
+            margin: 5% auto; /* Center the form horizontally */
+            padding: 20px; /* Add padding for better spacing */
+        }
+    </style>
+</head>
+<body>
+
+{% include "Nav_page.html" %}
+
+<div class="container">
+    <form class="upload-form" action="{% url 'upload' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2 class="text-center">Upload XLSX or CSV File</h2>
+        <div class="form-group">
+            <label for="file">Select File:</label>
+            <input type="file" class="form-control-file" id="file" name="xlsx">
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles can be added here */
+        body {
+            background-color: #f8f9fa; /* Bootstrap default background color */
+        }
+    </style>
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.tags %}
+    <script>alert("{{ message }}")</script>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+</head>
+<body>
+
+{% include "Nav_page.html" %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <form action="{% url 'count_records' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="year_founded_value">Status:</label>
+                    <select class="form-control" id="year_founded_value" name="year_founded_value" required>
+                        <option value="" selected disabled>Select Year Founded</option>
+                        {% for i in datalist %}
+                        <option>{{i.0}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="industry_types">Industry Type:</label>
+                    <select class="form-control" id="industry_types" name="industry_types" required>
+                        <option value="" selected disabled>Select Industry Type</option>
+                        {% for i in datalist %}
+                        <option>{{i.1}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="locality_value">Locality:</label>
+                    <select class="form-control" id="locality_value" name="locality_value" required>
+                        <option value="" selected disabled>Select Locality</option>
+                        {% for i in datalist %}
+                        <option>{{i.2}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-success">View</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Industry Type</th>
+                        <th>Locality Value</th>
+                        <th>Year Founded Value</th>
+                        <th>Organization Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in return_records %}
+                    <tr>
+                        <td>{{ item.0 }}</td>
+                        <td>{{ item.1 }}</td>
+                        <td>{{ item.2 }}</td>
+                        <td>{{ item.3}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
