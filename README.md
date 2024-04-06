@@ -22,13 +22,13 @@ Catalyst_count is a Django web application designed to upload the data using csv
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/your_username/your_project.git
+    git clone https://github.com/Aniket7738/Catalyst-count.git
     ```
 
 2. **Navigate to the project directory:**
 
     ```bash
-    cd your_project
+    cd catalyst_count
     ```
 
 3. **Install dependencies:**
@@ -67,35 +67,13 @@ Catalyst_count is a Django web application designed to upload the data using csv
    - Navigate to the upload page (`/upload`) and upload CSV or Excel files to add records to the database.
 
 3. **View records:**
-   - Access the view records page (`/records`) to view records from the database via REST API.
+   - Access the view records page (`/count-records`) to view records from the database via REST API.
 
 4. **User management:**
-   - Access the user management page (`/users`) to manage user accounts, including creation, viewing, updating, and deletion.
+   - Access the user management page (`/user_list`) to manage user accounts, including creation, viewing, updating, and deletion.
 
 ## Configuration
 
 - **Database:** Modify database settings in `settings.py` to match your PostgreSQL configuration.
 - **Static files:** Customize static files (CSS, JavaScript) in the `static` directory.
 - **Templates:** Customize HTML templates in the `templates` directory.
-
-## Testing
-
-- Describe how to run tests and any testing frameworks used.
-
-## Contributing
-
-- Guidelines for contributing to the project (e.g., reporting bugs, suggesting improvements, coding standards).
-
-## License
-
-- Specify the project's license.
-
-## Credits
-
-- Acknowledge any contributors, libraries, or resources used in the project.
-
-## Contact
-
-- Provide contact information for questions or feedback about the project.
-# catalyst_count
-# catalyst_count
